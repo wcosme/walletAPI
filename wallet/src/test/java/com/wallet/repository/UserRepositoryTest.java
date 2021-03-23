@@ -12,12 +12,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.wallet.entities.User;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Profile("test")
 public class UserRepositoryTest {
 
 	private static final String EMAIL = "email@teste.com.br";
@@ -52,6 +54,7 @@ public class UserRepositoryTest {
 		assertNotNull(response);
 	}
 	
+	@Test
 	public void testFindByEmail() {
 		Optional<User> response = repository.findByEmailEquals(EMAIL);
 		
